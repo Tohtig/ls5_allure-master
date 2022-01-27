@@ -14,6 +14,7 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
+import static org.openqa.selenium.By.partialLinkText;
 
 public class LambdaTest {
     private final String BASE_URL = "https://github.com";
@@ -40,7 +41,7 @@ public class LambdaTest {
             $(By.linkText(REPOSITORY)).click();
         });
         step("Переходим в таб Issues", () -> {
-            $(withText("Issues")).click();
+            $(partialLinkText("Issues")).click();
         });
         step("Проверяем что в табе Issue нет новых issue", () -> {
             $(".blankslate-large h3").shouldHave(text("There aren’t any open issues"));
